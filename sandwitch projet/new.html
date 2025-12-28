@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sandwich Builder</title>
+  <link rel="stylesheet" href="creatores.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!-- LEFT INGREDIENTS -->
+  <div class="ingredients-panel">
+    <div class="item">🥬 Salad
+      <button onclick="addIngredient('salad')">+</button>
+      <button onclick="removeIngredient('salad')">−</button>
+    </div>
+    <div class="item">🍅 Tomato
+      <button onclick="addIngredient('tomato')">+</button>
+      <button onclick="removeIngredient('tomato')">−</button>
+    </div>
+    <div class="item">🧀 Cheese
+      <button onclick="addIngredient('cheese')">+</button>
+      <button onclick="removeIngredient('cheese')">−</button>
+    </div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="creator">
+    <h1>Build Your Sandwich</h1>
+
+    <div class="timer">⏳ Time left: <span id="timer">0</span>s</div>
+
+    <div class="sandwich">
+      <div class="bread top"></div>
+      <div id="ingredients"></div>
+      <div class="bread bottom"></div>
+    </div>
+
+    <img src="images/Gemini_Generated_Image_fhsmvufhsmvufhsm.png" class="client">
+    <button class="reset" onclick="resetSandwich()">New Client</button>
+  </div>
+
+  <!-- RIGHT INGREDIENTS -->
+  <div class="ingredients-panel">
+    <div class="item">🍖 Meat
+      <button onclick="addIngredient('meat')">+</button>
+      <button onclick="removeIngredient('meat')">−</button>
+    </div>
+    <div class="item">🥫 Sauce
+      <button onclick="addIngredient('sauce')">+</button>
+      <button onclick="removeIngredient('sauce')">−</button>
+    </div>
+    <div class="item">🥚 Egg
+      <button onclick="addIngredient('egg')">+</button>
+      <button onclick="removeIngredient('egg')">−</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="creatores.js"></script>
+</body>
+</html>

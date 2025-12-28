@@ -1,0 +1,105 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('images/sondwitchbac.png');
+    background-size: cover;
+    background-position: center;
+    color: #222;
+}
+p {
+    font-size: 30px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color:#013b54;
+}
+.container h1{
+    text-align: center;
+    color: #169ff4;
+    margin-bottom: 20px;
+}
+.menu-lateral{
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    background-color: #333;
+    transform:translatex(-250px);
+    transition: 0.3s;
+    padding-top: 60px;
+}
+.menu-lateral.opn{
+    transform:translatex(0);
+}
+.menu-laterall a{
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #0c0c0c;
+    display: block;
+}
+/* HEADER */
+.container {
+    display: flex;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    
+    
+    align-items: center;
+    justify-content: center;
+}
+
+/* ABOUT SECTION */
+.about{
+    display: grid;         /* Active le mode Grid */
+    place-items: center;   /* Centre horizontalement ET verticalement en une ligne */
+    margin-:0px;
+    height: 20vh;
+
+}
+
+.about h2{
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #e63946;
+}
+
+.about-img{
+
+    width: 250px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.about-text{
+    padding: 20px;
+    background: #fff;
+    border-radius: 20px;
+    border: 2px solid #ddd;
+    flex: 1;
+    color: #08293d;
+}
+
+/* BUTTON */
+.btn-container{
+    width: 85%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-primary{
+    padding: 14px 22px;
+    background-color: rgb(237, 194, 5);
+    color: rgb(8, 117, 241);
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary:hover{
+    background-color: rgb(255, 206, 44);
+}

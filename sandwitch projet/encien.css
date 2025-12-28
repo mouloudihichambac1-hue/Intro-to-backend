@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('images/sanduitch.png'); 
+  background-size: cover;
+  background-position: center;
+  
+  padding-top: 40px;
+}
+
+.creator-container {
+
+  display: flex;
+  align-items:center;
+  gap:1px;
+  
+  width: 60%;
+  border-radius: 20px;
+  text-align: center;
+}
+
+/* Bread */
+.bread-top, .bread-bottom {
+  width: 250px;
+  height: 80px;
+  background: #af670f;
+  margin: 5px auto;
+  border-radius: 80px 80px 0px 0px;
+}
+
+/* Bottom bread is flatter */
+.bread-bottom {
+  height: 45px;
+  border-radius: 0 0 80px 80px;
+}
+
+/* Ingredients area */
+.ingredients {
+  margin:px auto;
+  width: 250px;
+}
+.salad, .tomato, .cheese, .meat , .sauce, .egg {
+  width: 250px;
+  height: 25px;
+  margin: 5px auto;
+  border-radius: 60px 60px 0px 0px;
+}
+
+.salad { background: #2ecc71; }
+.tomato { background: #e74c3c; }
+.cheese { background: #f1c40f; }
+.meat { background: #8e44ad; }
+.sauce { background: #d35400; }
+.egg { background: #f9f9f9; border: 1px solid #ddd; }
+
+/* Buttons */
+.controls button {
+  margin: 10px;
+  padding: 10px 10px;
+  background: #d5ce0fa6;
+  border: none;
+  border-radius: 20px 0px 20px 0px ;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-left:auto;
+}
+.item {
+  text-align: center;
+  background-color: aliceblue;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 15px;
+  width : 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.sandwich-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.item h1 { font-size: 1.2rem; margin-bottom: 10px; }
+.controls button:hover {
+  background: #28f8ff;
+  cursor:pointer;
+  border:2px solid red;
+  opacity:0.7;
+}

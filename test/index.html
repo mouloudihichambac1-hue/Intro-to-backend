@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandwich Tycoon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🥪 Sandwich Tycoon</h1>
+            <div class="wallet-display">
+                <span class="coin-icon">💰</span>
+                <span id="wallet-balance">0.00</span> €
+            </div>
+        </header>
+
+        <main>
+            <!-- Game Section: Earn Money -->
+            <section id="game-section" class="card">
+                <h2>Gagner de l'argent</h2>
+                <p>Travaillez pour gagner des pièces !</p>
+                <button id="work-btn" class="btn-primary">
+                    <span class="emoji">💼</span> Travailler (+1€)
+                </button>
+            </section>
+
+            <!-- Builder Section: The Sandwich -->
+            <section id="builder-section" class="card">
+                <h2>Votre Sandwich</h2>
+                <div id="sandwich-plate">
+                    <div class="plate-base"></div>
+                    <div id="sandwich-stack">
+                        <!-- Ingredients will pile up here -->
+                        <div class="placeholder-text">Commencez à acheter des ingrédients !</div>
+                    </div>
+                </div>
+                <div class="sandwich-actions">
+                    <button id="eat-btn" class="btn-secondary" disabled>Manger (Reset)</button>
+                </div>
+            </section>
+
+            <!-- Shop Section: Buy Ingredients -->
+            <section id="shop-section" class="card">
+                <h2>Marché des Ingrédients</h2>
+                <div class="shop-tabs">
+                    <button class="tab-btn active" data-category="bread">Pains</button>
+                    <button class="tab-btn" data-category="meat">Viandes</button>
+                    <button class="tab-btn" data-category="veggie">Légumes</button>
+                    <button class="tab-btn" data-category="sauce">Sauces</button>
+                </div>
+                <div id="shop-grid" class="shop-grid">
+                    <!-- Shop items injected by JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
