@@ -1,0 +1,31 @@
+{
+  "name": "digital_absence_backend",
+  "version": "1.0.0",
+  "description": "project backend for digital absence",
+  "homepage": "https://github.com/mouloudihichambac1-hue/Intro-to-backend#readme",
+  "bugs": {
+    "url": "https://github.com/mouloudihichambac1-hue/Intro-to-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mouloudihichambac1-hue/Intro-to-backend.git"
+  },
+  "license": "ISC",
+  "author": "Hicham",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.0.0",
+    "mongoose": "^9.0.2",
+    "nodemon": "^3.1.11",
+    "process": "^0.11.10"
+  }
+}
