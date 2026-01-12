@@ -35,7 +35,24 @@ const loginStudent=async(req,res) =>{
         res.status(500).json({message:"Internal server error",error:error.message});
     }
 };
+const getStudent1=async(req,res)=>{
+    try {
+        const currentStudent = await Student.findById(req.user.id);
+        if (!currentStudent) {
+            return res.status(404).json({ message: "prof not existe" });
+        }
+    res.status(200).json({
+            nom: currentStudent.nom ,
+            prenom:currentStudent.prenom
+            
+        });
+       
+} 
+catch (error) {
+    res.status(500).json({ message:error.message });
+}
+};
 
 export{
-    loginStudent
+    loginStudent,getStudent1
 }

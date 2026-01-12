@@ -1,12 +1,15 @@
 import express from 'express';
 import cors from 'cors';
-
 const app =express();//create expres app
-app.use(express.json());//middleware to parse json request body
 app.use(cors({
-    origin:'*',
+    origin: true, // Autorise l'origine dynamique
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+app.use(express.json());//middleware to parse json request body
+
 import superUserRouter from './routers/SuperUser.route.js';
 import sessionRouter from './routers/Session.route.js';
 import studentRouter from './routers/Student.route.js';

@@ -64,12 +64,18 @@ AdminSchema.methods.generateToken = async function() {
 AdminSchema.methods.comparePassword = async function(password) {
     return await bcrypt.compare(password, this.password);
 };
-const getAdmins=async()=>{
+const getAdmins=async(req,res)=>{
     try {
-    return await Admin.find();
+        const currentAdmin = await Admin.findById(req.user.id);
+        if (!currentAdmin) {
+            return res.status(404).json({ message: "Administrateur non trouvé" });
+        }
+    res.status(200).json({
+            username: currentAdmin.username 
+        });
 } 
 catch (error) {
-    throw error;
+    res.status(500).json({ message:error.message });
 }
 };
 

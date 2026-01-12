@@ -22,7 +22,7 @@
     </nav>
 
     <header class="welcome-banner">
-        <h1>Bienvenue, Université <span id="admin-name">Université</span></h1>
+        <h1 id="univ-name" style="color: red;"></h1>
         <p>Gestion des Enseignants et Étudiants</p>
     </header>
 
@@ -114,27 +114,26 @@
         </div>
         <div class="panel-body">
             <form id="editMemberForm">
-                <input type="hidden" id="editid">
-                <input type="hidden" id="editRole">
-            
+                <input type="hidden" id="edit-id">
+                <input type="hidden" id="edit-role">
+    
                 <label>Nom</label>
-                <input type="text" id="editNom" required>
-            
-                <label>Prénom</label>
-                <input type="text" id="editPrenom" required>
-            
-                <label>Âge</label>
-                <input type="number" id="editAge" required >
-            
-                <label>Email</label>
-                <input type="email" id="editEmail" required >
-
-                <div id="teacher-only-edit" style="display:none;">
-                    <label>Spécialité (Adders)</label>
+                <input type="text" id="edit-nom" required> <label>Prénom</label>
+                <input type="text" id="edit-prenom" required> <label>Âge</label>
+                <input type="number" id="edit-age" required > <label>Email</label>
+                <input type="email" id="edit-email" required > <div id="teacher-only-edit" style="display:none;">
+                <label>Spécialité</label>
                     <input type="text" id="edit-adders">
                 </div>
 
+                <div id="student-only-edit" style="display:none;">
+                    <label>Filière</label>
+                <select id="edit-filiere" class="full-width">
+                    </select>
+                </div>
+
                 <button type="submit" class="btn-save">Appliquer les modifications</button>
+    
             </form>
         </div>
     </div>

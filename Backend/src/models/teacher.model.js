@@ -84,7 +84,7 @@ teacherSchema.methods.comparePassword = async function(password) {
 };
 const getTeacher=async(req,res)=>{
     try {
-            const Allteachers = await Teacher.find();
+            const Allteachers = await Teacher.find({university:req.user.id});
             res.status(200).json(Allteachers);
         } catch (error) {
             res.status(500).json({ message: error.message });

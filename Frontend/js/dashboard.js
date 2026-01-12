@@ -12,11 +12,10 @@ function closeModal() {
     if (modal) modal.style.display = 'none';
 }
 
-function openEditPanel(id, role, nom, prenom, age, email) {
+function openEditPanel(id, role, nom, prenom, age, email, extraData) {
     const panel = document.getElementById('editPanel');
     if (panel) panel.classList.add('open');
     
-    // Remplissage des champs cachés et visibles
     document.getElementById('edit-id').value = id;
     document.getElementById('edit-role').value = role;
     document.getElementById('edit-nom').value = nom;
@@ -24,12 +23,21 @@ function openEditPanel(id, role, nom, prenom, age, email) {
     document.getElementById('edit-age').value = age;
     document.getElementById('edit-email').value = email;
 
-    // Gestion du champ spécialité dans le volet d'édition
     const teacherFields = document.getElementById('teacher-only-edit');
-    if(teacherFields) {
-        teacherFields.style.display = (role === 'teacher') ? 'block' : 'none';
+    const studentFields = document.getElementById('student-only-edit');
+
+    if (role === 'teacher') {
+        teacherFields.style.display = 'block';
+        studentFields.style.display = 'none';
+        document.getElementById('edit-adders').value = extraData || "";
+    } else {
+        teacherFields.style.display = 'none';
+        studentFields.style.display = 'block';
+        // On pré-sélectionne la filière si extraData contient l'ID
+        document.getElementById('edit-filiere').value = extraData || "";
     }
 }
+
 
 function closeEditPanel() {
     const panel = document.getElementById('editPanel');
@@ -64,7 +72,33 @@ window.onclick = function(event) {
     const modal = document.getElementById('addModal');
     if (event.target == modal) closeModal();
 };
+//le nomme pour le Bienvenu
+document.addEventListener('DOMContentLoaded', async () => {
+    const univSpan = document.getElementById('univ-name');
+    const token = localStorage.getItem('token');
 
+    try {
+        const response = await fetch(`${BASE_URL}/getAdmin`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            // Vérifions si le backend renvoie 'AdminName' ou juste 'name'
+            univSpan.innerText = "Bienvenu : "+ data.username.toUpperCase(); 
+        } else {
+            univSpan.innerText = "Rafraicher la page,et resayer";
+        }
+    } catch (error) {
+        console.error("Erreur d'affichage :", error);
+        univSpan.innerText = "Erreur réseau";
+    }
+});
+//get membrs
 async function loadMembers() {
     const token = localStorage.getItem('token');
     const tbody = document.getElementById('membersBody');
@@ -123,6 +157,9 @@ async function loadMembers() {
 }
 
 function renderRow(user, role, container) {
+    // On récupère la donnée spécifique selon le rôle
+    const extraData = role === 'teacher' ? user.speciality : (user.filiere?._id || user.filiere);
+    
     const row = document.createElement('tr');
     row.innerHTML = `
         <td>${user.num_Authentication || 'N/A'}</td>
@@ -133,7 +170,7 @@ function renderRow(user, role, container) {
         <td>${user.age}</td>
         <td>${user.sex || 'N/A'}</td>
         <td>
-            <button class="btn-edit" onclick="openEditPanel('${user._id}', '${role}', '${user.nom}', '${user.prenom}', ${user.age}, '${user.email}')" title="Modifier">✏️</button>
+            <button class="btn-edit" onclick="openEditPanel('${user._id}', '${role}', '${user.nom}', '${user.prenom}', ${user.age}, '${user.email}', '${extraData}')" title="Modifier">✏️</button>
             <button class="btn-delete" onclick="deleteUser('${user._id}', '${role}')" title="Supprimer">🗑️</button>
         </td>
     `;
@@ -295,8 +332,8 @@ function logout() {
 // Fonction pour charger les filières dans le menu déroulant du formulaire
 async function loadFilieresList() {
     const token = localStorage.getItem('token');
-    const filiereSelect = document.getElementById('studentFiliere'); 
-
+    const filiereSelect = document.getElementById('studentFiliere');
+    const editFiliereSelect = document.getElementById('edit-filiere');
     if (!filiereSelect) return;
 
     try {
@@ -317,6 +354,7 @@ async function loadFilieresList() {
             option.value = filiere._id; // C'est l'ID technique envoyé au Backend
             option.textContent = filiere.nom.toUpperCase(); // C'est le nom affiché à l'Admin
             filiereSelect.appendChild(option);
+            if(editFiliereSelect) editFiliereSelect.appendChild(option.cloneNode(true));
         });
 
     } catch (error) {
@@ -428,4 +466,6 @@ window.onload = () => {
     displayFilieres();
     loadMembers();
     loadFilieresList(); 
+    
+    
 };

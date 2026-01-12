@@ -1,4 +1,5 @@
 const BASE_URL = "http://localhost:4000/api/v1/sessions";
+const BASE_URL1 = "http://localhost:4000/api/v1/teachers";
 let currentSessionId = null;
 let refreshInterval = null;
 
@@ -118,3 +119,30 @@ function logout() {
         window.location.href = "login.html?role=prof";
     }
 }
+//salutation
+document.addEventListener('DOMContentLoaded', async () => {
+    const profheader = document.getElementById('prof-name');
+    const token = localStorage.getItem('token');
+
+    try {
+        const response = await fetch(`${BASE_URL1}/getTeacher1`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            
+            profheader.innerText = "Bienvenu : "+ data.nom.toUpperCase() +" "+data.prenom.toUpperCase(); 
+        } else {
+            console.warn("Impossible de récupérer le profil prof");
+           profheader.innerText = "Rafraicher la page,et resayer";
+        }
+    } catch (error) {
+        console.error("Erreur d'affichage :", error);
+        profheader.innerText = "Erreur réseau";
+    }
+});
