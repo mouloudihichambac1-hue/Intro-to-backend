@@ -1,0 +1,83 @@
+:root {
+    --primary-color: #001e2b;
+    --accent-color: #00684a;
+    --bg-light: #f9fbfb;
+    --text-dark: #001e2b;
+    --status-green: #28a745;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.teacher-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: white;
+    border-bottom: 2px solid #e8edeb;
+}
+
+.logo { font-weight: bold; font-size: 1.2rem; color: var(--accent-color); }
+.mode { font-size: 0.8rem; background: #eee; padding: 3px 8px; border-radius: 4px; margin-left: 10px; }
+
+.container { padding: 30px; max-width: 1000px; margin: 0 auto; }
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.input-group { display: flex; gap: 10px; margin-top: 15px; }
+input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #d1d5d3;
+    border-radius: 6px;
+}
+
+.btn-generate {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.code-display {
+    margin-top: 20px;
+    text-align: center;
+    background: #f0f7f4;
+    padding: 20px;
+    border: 2px dashed var(--accent-color);
+    border-radius: 8px;
+}
+
+.code-display strong { font-size: 2.5rem; color: var(--accent-color); letter-spacing: 5px; }
+
+.sheet-header { display: flex; justify-content: space-between; align-items: center; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th { text-align: left; padding: 12px; border-bottom: 2px solid #eee; color: #5d6c74; }
+td { padding: 12px; border-bottom: 1px solid #eee; }
+
+.status-present {
+    color: var(--status-green);
+    font-weight: bold;
+    font-size: 0.85rem;
+    background: #eaf6ed;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.btn-close { background: #d32f2f; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+.btn-close:disabled { background: #ccc; cursor: not-allowed; }

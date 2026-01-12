@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Absence - Admin Dashboard </title>
+    <link rel="icon" type="image/x-icon" href="images/abslogo.png">
+    <link rel="stylesheet" href="css/style-dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="images/abslogo.png" alt="Logo" style="width:80px;height:80px" >
+            <span class="logo-text"> 🍃 Digital Absence</span>
+            <span class="divider">|</span>
+            <span class="nav-subtext">ADMINISTRATION</span>
+        </div>
+        <div class="nav-right">
+            <button class="btn-add" onclick="openModal()">+ AJOUTER MEMBRE</button>
+            <button class="btn-logout" onclick="logout()">Déconnexion</button>
+        </div>
+       
+    </nav>
+
+    <header class="welcome-banner">
+        <h1>Bienvenue, Université <span id="admin-name">Université</span></h1>
+        <p>Gestion des Enseignants et Étudiants</p>
+    </header>
+
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nouveau Profil</h3>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            
+            <form id="addMemberForm">
+                <select id="userType" class="full-width" onchange="toggleSpeciality()" required>
+                    <option value="student">Étudiant</option>
+                    <option value="teacher">Enseignant</option>
+                </select>
+
+                <div class="form-grid">
+                    <input type="text" id="nom" placeholder="Nom" required>
+                    <input type="text" id="prenom" placeholder="Prénom" required>
+                    <input type="number" id="age" placeholder="Âge" required>
+                    <select id="sex" required>
+                        <option value="">Sexe</option>
+                        <option value="M">Masculin</option>
+                        <option value="F">Féminin</option>
+                    </select>
+                    <input type="number" id="num_auth" placeholder="N° Authentification" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Mot de passe" required>
+                    
+                
+                <div id="speciality-container" style="display:none; margin-top:10px;">
+                    <input type="text" id="speciality" placeholder="Spécialité">
+                </div>
+                <div id="filiere-container" style="margin-top:10px;">
+                    <select id="studentFiliere" class="full-width">
+                        <option value="">-- Choisir une filière --</option>
+                    </select>
+                </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal()">Annuler</button>
+                    <button type="submit" class="btn-save">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <main class="dashboard-content">
+        
+        <div class="table-container">
+            <h3>Liste des Membres</h3>
+             <div class="table-actions" style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
+            <select id="filterType" class="btn-secondary" style="padding: 9px;">
+                <option value="all">Tous les Mombres</option>
+                <option value="student">Étudiants uniquement</option>
+                <option value="teacher">Professeurs uniquement</option>
+            </select>
+
+            <button id="btn-fetch" class="btn-primary" onclick="loadMembers()">
+                🔍 Afficher la liste
+            </button>
+        </div>
+            <table id="membersTable">
+                <thead>
+                    <tr>
+                        <th>N°_Auth</th>
+                        <th>Rôle</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Âge</th>
+                        <th>ganre</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="membersBody">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="editPanel" class="side-panel">
+        <div class="panel-header">
+            <h3 id="panelTitle">Détails du Membre✏️</h3>
+            <span class="close-btn" onclick="closeEditPanel()">&times;</span>
+        </div>
+        <div class="panel-body">
+            <form id="editMemberForm">
+                <input type="hidden" id="editid">
+                <input type="hidden" id="editRole">
+            
+                <label>Nom</label>
+                <input type="text" id="editNom" required>
+            
+                <label>Prénom</label>
+                <input type="text" id="editPrenom" required>
+            
+                <label>Âge</label>
+                <input type="number" id="editAge" required >
+            
+                <label>Email</label>
+                <input type="email" id="editEmail" required >
+
+                <div id="teacher-only-edit" style="display:none;">
+                    <label>Spécialité (Adders)</label>
+                    <input type="text" id="edit-adders">
+                </div>
+
+                <button type="submit" class="btn-save">Appliquer les modifications</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="filiere-management card" style="margin-top: 40px;">
+        <h3>🏫 Gestion des Filières</h3>
+    
+        <div class="filiere-actions" style="margin-bottom: 15px; display: flex; gap: 10px;">
+            <input type="text" id="newFiliereName" placeholder="Nom de la nouvelle filière (ex: Génie Info)">
+            <button class="btn-save" onclick="createNewFiliere()">Ajouter Filière</button>
+        </div>
+
+        <table id="filiereTable">
+            <thead>
+                <tr>
+                    <th>Nom de la Filière</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="filiereBody">
+                </tbody>
+        </table>
+    </section>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

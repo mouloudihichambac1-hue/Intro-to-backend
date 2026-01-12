@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tablette Professeur - Digital Absence</title>
+    <link rel="stylesheet" href="css/style-teacher.css">
+</head>
+<body>
+    <nav class="teacher-nav">
+        <div class="logo">🍃 Digital Absence <span class="mode">PROFESSEUR</span></div>
+        <button class="btn-exit" onclick="logout()">Quitter</button>
+    </nav>
+
+    <main class="container">
+        <section class="session-setup card">
+            <h2>Lancer un nouveau cours</h2>
+            <div class="input-group">
+                <input type="text" id="courseName" placeholder="Ex: Développement Web">
+                <button class="btn-generate" onclick="generateSession()">LANCER L'APPEL</button>
+            </div>
+            <div id="activeCodeDisplay" class="code-display" style="display:none;">
+                <span>CODE À PARTAGER :</span>
+                <strong id="displayCode">----</strong>
+            </div>
+        </section>
+
+        <section class="attendance-sheet card">
+            <div class="sheet-header">
+                <h3>Étudiants présents (<span id="presentCount">0</span>)</h3>
+                <button class="btn-close" id="stopBtn" onclick="stopSession()" disabled>Fermer la session</button>
+            </div>
+            <table id="attendanceTable">
+                <thead>
+                    <tr>
+                        <th>Heure</th>
+                        <th>N° Auth</th>
+                        <th>Nom & Prénom</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody id="attendanceBody">
+                    <tr><td colspan="4" class="empty">Aucune session en cours</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="js/teacher-logic.js"></script>
+</body>
+</html>

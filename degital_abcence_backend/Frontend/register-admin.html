@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription Université - Digital Absence</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+    <div class="login-card">
+        <img src="images/abslogo.png" alt="Logo" class="logo-small">
+        <h2>Créer un compte Administration</h2>
+        
+        <form id="registerAdminForm">
+            <input type="text" id="username" placeholder="Nom de l'université (ex: INPT)" required>
+            <input type="email" id="email" placeholder="Email administratif" required>
+            <input type="password" id="password" placeholder="Mot de passe" required>
+            
+            <button type="submit" class="login-submit">Enregistrer l'Université</button>
+        </form>
+
+        <div class="first-time">
+            <hr>
+            <p>Déjà un compte ?</p>
+            <a href="login.html?role=admin" class="create-btn">Se connecter</a>
+        </div>
+    </div>
+
+    <script src="js/register-admin.js"></script>
+</body>
+</html>

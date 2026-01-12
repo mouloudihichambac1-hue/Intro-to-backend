@@ -1,31 +1,53 @@
 import mongoose, { Schema } from 'mongoose';
-
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const studentSchema = new Schema(
     {
-        username:{
+        nom:{
             type:String,
-            required:true,
-            unique:true,
-            lowercase:true,
             trim:true,
-            minlength:3,
+            minlength:2,
             maxlength:30,
+        },
+        prenom:{
+            type:String,
+            trim:true,
+            minlength:2,
+            maxlength:30,
+        },
+        age:{
+            type:Number,
+            trim:true,
+            maxlength:30,
+        },
+        num_Authentication:{
+            type:Number,
+            trim:true,
+        },
+        sex:{
+            type:String,
+            trim:true,
         },
         email:{
             type:String,
-            required:true,
             unique:true,
-            lowercase:true,
             trim:true,
         },
         password:{
             type:String,
             required:true,
             minlength:6,
-            maxlength:12,
-        
+        },
+        filiere: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Filiere',
+        required: true
+        },
+        university: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Admin',
+            required: true
         },
         
         createdat:{
@@ -35,11 +57,23 @@ const studentSchema = new Schema(
     },
     {
         timestamps:true,
-    });
-studentSchema.methods.isPasswordCorrect = async function(password) {
-    // Si tu n'as pas encore mis en place le hachage avec bcrypt, fais une comparaison simple :
-    return password === this.password;
-};
+    })
+studentSchema.pre('save', async function() {
+    if (!this.isModified('password')) { 
+        return;
+    }
+
+    try {
+        
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+        
+         
+    } catch (error) {
+        
+        throw error;
+    }
+});
 studentSchema.methods.generateToken = async function() {
     const token = jwt.sign(
         { id: this._id, email: this.email },
@@ -48,6 +82,17 @@ studentSchema.methods.generateToken = async function() {
     );
     return token;
 };
-
+studentSchema.methods.comparePassword = async function(password) {
+    return await bcrypt.compare(password, this.password);
+};
+const getStudent =async (req,res) => {
+    try {
+        const Allstudents = await Student.find({university:req.user.id}).populate('filiere', 'nom');
+        res.status(200).json(Allstudents);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 export const Student = mongoose.model('Student',studentSchema
 );
+export {getStudent};

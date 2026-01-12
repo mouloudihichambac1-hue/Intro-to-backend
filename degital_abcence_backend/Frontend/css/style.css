@@ -1,0 +1,460 @@
+/* --- Variables de Design --- */
+:root {
+    --primary-green: #00684a;
+    --dark-blue: #001e2b;
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Base & Background --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.home-bg {
+    background: url('../images/university-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Superposition sombre pour faire ressortir le texte */
+.overlay {
+    background: linear-gradient(135deg, rgba(0, 30, 43, 0.8) 0%, rgba(0, 104, 74, 0.6) 100%);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* --- Header & Logo --- */
+.main-header {
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.8s ease;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    margin-bottom: 1rem;
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+/* --- Hero Section --- */
+.hero-section p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* --- Container des Rôles --- */
+.role-container {
+    display: flex;
+    gap: 30px;
+    padding: 0 20px;
+    max-width: 1100px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* --- Cartes de Rôles (Style Premium) --- */
+.role-card {
+    background: var(--glass-bg);
+    color: var(--dark-blue);
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 250px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.role-card:hover {
+    transform: translateY(-15px);
+    background: #ffffff;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.role-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    transition: var(--transition);
+}
+
+.role-card:hover .role-icon {
+    transform: scale(1.1);
+}
+
+.role-card h3 {
+    margin: 10px 0 20px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* --- Bouton style Moodle --- */
+.moodle-btn {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+}
+
+.role-card:hover .moodle-btn {
+    background-color: var(--dark-blue);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* --- Animations --- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .role-container { flex-direction: column; }
+    .main-header h1 { font-size: 1.8rem; }
+    .role-card { width: 80vw; }
+}
+/* --- Page de Connexion --- */
+.login-page {
+    background: linear-gradient(rgba(0, 30, 43, 0.7), rgba(0, 30, 43, 0.7)), 
+                url('../images/university-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.logo-small {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.login-card h2 {
+    color: var(--dark-blue);
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* --- Formulaire --- */
+#authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#authForm input {
+    padding: 14px 20px;
+    border: 2px solid #f0f2f2;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: var(--transition);
+    outline: none;
+}
+
+#authForm input:focus {
+    border-color: var(--primary-green);
+    background-color: #f0f7f4;
+}
+
+.forgot-pwd {
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--gray);
+    text-decoration: none;
+    margin-top: -5px;
+}
+
+.forgot-pwd:hover {
+    color: var(--primary-green);
+}
+
+.login-submit {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 10px;
+}
+
+.login-submit:hover {
+    background-color: var(--dark-blue);
+    transform: translateY(-2px);
+}
+
+/* --- Section Admin Spécifique --- */
+#admin-only-section {
+    margin-top: 30px;
+    animation: fadeIn 1s ease;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+#admin-only-section h3 {
+    font-size: 1rem;
+    color: var(--dark-blue);
+    margin-bottom: 10px;
+}
+
+#admin-only-section p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.create-btn {
+    display: inline-block;
+    color: var(--primary-green);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.create-btn:hover {
+    transform: translateX(5px);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* --- Variables Globales --- */
+:root {
+    --primary-green: #00684a;      
+    --dark-blue: #001e2b;         
+    --accent-green: #00ed64;      
+    --white: #ffffff;
+    --gray-light: #f0f2f2;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Reset & Fond --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Fond partagé pour l'accueil et le login */
+.home-bg, .login-page {
+    background: url('../images/university-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+/* Overlay pour lisibilité */
+.overlay, .login-page::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 30, 43, 0.85) 0%, rgba(0, 104, 74, 0.7) 100%);
+    z-index: 1;
+}
+
+.overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* --- Header d'accueil --- */
+.main-header {
+    text-align: center;
+    margin-bottom: 50px;
+    z-index: 3;
+}
+
+.logo {
+    width: 100px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    margin-bottom: 20px;
+}
+
+.main-header h1 {
+    color: var(--white);
+    font-size: 2.8rem;
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.hero-section p {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+/* --- Cartes de Rôles (Accueil) --- */
+.role-container {
+    display: flex;
+    gap: 25px;
+    z-index: 3;
+    perspective: 1000px;
+}
+
+.role-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px 30px;
+    border-radius: 24px;
+    width: 260px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.role-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-15px) scale(1.02);
+    border-color: var(--accent-green);
+}
+
+.role-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.role-card h3 {
+    color: var(--white);
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+}
+
+/* --- Page de Connexion & Inscription --- */
+.login-card {
+    position: relative;
+    z-index: 10;
+    background: var(--white);
+    padding: 50px 40px;
+    border-radius: 28px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+.logo-small {
+    width: 70px;
+    margin-bottom: 15px;
+}
+
+.login-card h2 {
+    color: var(--dark-blue);
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+/* --- Formulaires --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    background: var(--gray-light);
+    border: 2px solid transparent;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus {
+    border-color: var(--primary-green);
+    background: var(--white);
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 104, 74, 0.1);
+}
+
+.login-submit {
+    background: var(--primary-green);
+    color: var(--white);
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 10px;
+}
+
+.login-submit:hover {
+    background: var(--dark-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.forgot-pwd, .create-btn {
+    color: var(--primary-green);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.forgot-pwd:hover, .create-btn:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .role-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .role-card { width: 300px; }
+}

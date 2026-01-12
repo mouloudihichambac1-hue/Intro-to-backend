@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pointage Étudiant</title>
+    <link rel="stylesheet" href="css/style-mobile.css">
+</head>
+<body>
+    <div class="mobile-container">
+        <header>
+            <div class="user-info">
+                <span id="student-name">Chargement...</span>
+                <button onclick="logout()">🏃</button>
+            </div>
+        </header>
+
+        <main class="check-in-area">
+            <div class="card">
+                <h2>Validation de Présence</h2>
+                <p>Entrez le code affiché sur la tablette du professeur :</p>
+                
+                <input type="text" id="inputCode" placeholder="CODE EX: A1B2C" maxlength="5">
+                
+                <button id="btnMark" class="btn-primary" onclick="submitPresence()">
+                    MARQUER MA PRÉSENCE
+                </button>
+                <p id="feedback" class="msg"></p>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/student-logic.js"></script>
+</body>
+</html>

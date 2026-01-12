@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - Digital Absence</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+    <div class="login-card">
+        <img src="images/abslogo.png" alt="Logo" class="logo-small">
+        <h2 id="login-title">Connexion</h2>
+        
+        <form id="authForm">
+            <input type="text" id="identifier" placeholder="Nom d'utilisateur ou email" required>
+            <input type="password" id="password" placeholder="Mot de passe" required>
+            <a href="#" class="forgot-pwd">Mot de passe oublié ?</a>
+            <button type="submit" class="login-submit">Connexion</button>
+        </form>
+
+        <div id="admin-only-section" class="first-time" style="display: none;">
+            <hr>
+            <h3>C'est votre première fois ici ?</h3>
+            <p>Si vous êtes administrateur et que vous n'avez pas encore de compte, veuillez en créer un pour gérer l'université.</p>
+            <a href="register-admin.html" class="create-btn">Créer un compte Admin →</a>
+        </div>
+    </div>
+
+    <script>
+        // Détecter le rôle via l'URL
+        const params = new URLSearchParams(window.location.search);
+        const role = params.get('role');
+
+        if (role === 'admin') {
+            document.getElementById('login-title').innerText = "Connexion Administration";
+            document.getElementById('admin-only-section').style.display = "block";
+        } else if (role === 'prof') {
+            document.getElementById('login-title').innerText = "Connexion Professeur";
+        } else {
+            document.getElementById('login-title').innerText = "Connexion Étudiant";
+        }
+    </script>
+<script src="js/dynam.js"></script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+/* --- BASE --- */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9fbfb;
+    color: #001e2b;
+}
+
+/* --- NAVIGATION --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 0 24px;
+    height: 64px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #e8edeb;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-text {
+    font-weight: 700;
+    color: #00684a;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+}
+
+.divider {
+    color: #d1d5d3;
+    font-size: 1.5rem;
+}
+
+.nav-subtext {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #5d6c74;
+}
+
+/* --- BOUTONS GENERAUX --- */
+.btn-add {
+    background-color: #00684a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #00593f;
+}
+
+.btn-logout {
+    background: none;
+    border: 1px solid #d1d5d3;
+    color: #5d6c74;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* --- CONTENU & DASHBOARD --- */
+.welcome-banner {
+    padding: 40px 24px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e8edeb;
+}
+
+.welcome-banner h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #001e2b;
+}
+
+.welcome-banner p {
+    color: #5d6c74;
+    margin-top: 8px;
+}
+
+.dashboard-content {
+    padding: 32px 24px;
+}
+
+.data-table-container {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e8edeb;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    min-height: 200px;
+    overflow: hidden;
+}
+
+.table-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e8edeb;
+}
+
+/* --- BADGES (ROLES) --- */
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge.teacher {
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+
+.badge.student {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+/* --- MODAL (AJOUT) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 30, 43, 0.6);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 32px;
+    width: 480px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.close-btn {
+    font-size: 28px;
+    cursor: pointer;
+    color: #5d6c74;
+}
+
+.role-selector {
+    margin-bottom: 20px;
+}
+
+.role-selector select, #studentFiliere {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5d3;
+    background-color: white;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #d1d5d3;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.specific-fields {
+    margin-top: 16px;
+}
+
+.specific-fields input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+/* --- SIDE PANEL (EDITION) --- */
+.side-panel {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 380px; 
+    height: 100%;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    transition: 0.3s ease-in-out;
+    z-index: 2000;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.side-panel.open {
+    right: 0px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.panel-body {
+    margin-top: 20px;
+    background-color: #f0f7f4; 
+    border-radius: 16px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.btn-save-patch {
+    background: #00684a;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* --- GESTION DES FILIERES --- */
+.filiere-management {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+    border: 1px solid #e8edeb;
+}
+
+.filiere-management h3 {
+    color: #001e2b;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f2f2;
+    padding-bottom: 10px;
+}
+
+.filiere-actions {
+    display: flex;
+    gap: 12px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.filiere-actions input[type="text"] {
+    flex: 1;
+}
+
+/* --- TABLEAUX --- */
+#filiereTable, .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+:root {
+    --primary: #00684a;         
+    --primary-light: #e6f2ef;
+    --accent: #00ed64;          
+    --dark: #001e2b;           
+    --text-muted: #5d6c74;
+    --bg-page: #f0f4f5;
+    --white: #ffffff;
+    --shadow: 0 8px 24px rgba(0, 30, 43, 0.08);
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--primary);
+}
+
+
+.data-table-container {
+    border: none;
+    box-shadow: var(--shadow);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.table-header {
+    background: linear-gradient(to right, var(--white), var(--primary-light));
+    border-bottom: 2px solid var(--primary-light);
+}
+
+table {
+    border-spacing: 0;
+}
+
+thead th {
+    background-color: var(--white);
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 18px;
+}
+
+tbody tr {
+    transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: var(--primary-light);
+    transform: scale(1.005);
+}
+
+/* --- Badges de Rôle Dynamiques --- */
+.badge {
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-student {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.badge-teacher {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+/* --- Boutons d'Action Stylisés --- */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-edit-ui { background: #f0fdf4; color: #16a34a; }
+.btn-delete-ui { background: #fef2f2; color: #dc2626; }
+
+.btn-edit-ui:hover { background: #16a34a; color: white; }
+.btn-delete-ui:hover { background: #dc2626; color: white; }
+tr:hover {
+    background-color: #f9fafb;
+}
+
+.btn-edit, .btn-delete {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 6px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.btn-edit:hover { background-color: #e0f2fe; }
+.btn-delete:hover { background-color: #fee2e2; }
+#filiere-container select, #speciality-container input {
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
