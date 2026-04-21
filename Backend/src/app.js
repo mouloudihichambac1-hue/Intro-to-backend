@@ -1,13 +1,28 @@
 import express from 'express';
 import cors from 'cors';
-const app =express();//create expres app
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit'; 
+
+const app = express();
+
+app.use(helmet()); 
+app.disable('x-powered-by');
+
+//  Configuration CORS restrictive
+const allowedOrigin = process.env.FRONTEND_URL;
 app.use(cors({
-    origin: true, // Autorise l'origine dynamique
+    origin: allowedOrigin,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+//  Protection contre les abus
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100 
+});
+app.use("/api/v1/", limiter);
 app.use(express.json());//middleware to parse json request body
 
 import superUserRouter from './routers/SuperUser.route.js';

@@ -1,0 +1,18 @@
+services:
+  backend-service:
+    build: ./Backend
+    container_name: digital-backend
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  frontend-service:
+    build: ./Frontend
+    container_name: digital-frontend
+    ports:
+      - "5500:80"
+    depends_on:
+      - backend-service
+    restart: unless-stopped

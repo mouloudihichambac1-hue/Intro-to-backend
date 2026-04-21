@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import connectDB from './config/detabase.js';
 import app from './app.js';
 dotenv.config({
-    path: './.env'
+    path: '../.env'
 });
 const startServer =async () => {
     try {
@@ -18,6 +18,7 @@ const startServer =async () => {
     } 
     catch (error) {
         console.log("Error in starting server" ,error);
+        console.log("URI reçue :", process.env.MONGODB_URI);
     }
 }
 startServer();
