@@ -1,4 +1,6 @@
-const BASE_URL = "http://localhost:4000/api/v1/admins";
+const pc_mob =window.location.hostname;
+
+const BASE_URL = `http://${pc_mob}:4000/api/v1/admins`;
 
 // --- 1. GESTION DES FENÊTRES (MODAL & SIDE PANEL) ---
 
@@ -337,7 +339,7 @@ async function loadFilieresList() {
     if (!filiereSelect) return;
 
     try {
-        const response = await fetch('http://localhost:4000/api/v1/admins/getFilieres', {
+        const response = await fetch(`http://${pc_mob}:4000/api/v1/admins/getFilieres`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -368,7 +370,7 @@ async function displayFilieres() {
     if (!tbody) return;
 
     try {
-        const res = await fetch('http://localhost:4000/api/v1/admins/getFilieres', {
+        const res = await fetch(`http://${pc_mob}:4000/api/v1/admins/getFilieres`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         const filieres = await res.json();
@@ -398,7 +400,7 @@ async function createNewFiliere() {
     
 
     try {
-        const res = await fetch('http://localhost:4000/api/v1/admins/registerFiliere', {
+        const res = await fetch(`http://${pc_mob}:4000/api/v1/admins/registerFiliere`, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
@@ -424,7 +426,7 @@ async function removeFiliere(id) {
 
     const token = localStorage.getItem('token');
     try {
-        const res = await fetch(`http://localhost:4000/api/v1/admins/deleteFiliere/${id}`, {
+        const res = await fetch(`http://${pc_mob}:4000/api/v1/admins/deleteFiliere/${id}`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -443,7 +445,7 @@ async function editFilierePrompt(id, oldName) {
 
     const token = localStorage.getItem('token');
     try {
-        const res = await fetch(`http://localhost:4000/api/v1/admins/updateFiliere/${id}`, {
+        const res = await fetch(`http://${pc_mob}:4000/api/v1/admins/updateFiliere/${id}`, {
             method: 'PATCH',
             headers: { 
                 'Content-Type': 'application/json',

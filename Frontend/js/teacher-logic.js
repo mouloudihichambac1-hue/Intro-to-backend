@@ -1,5 +1,6 @@
-const BASE_URL = "http://localhost:4000/api/v1/sessions";
-const BASE_URL1 = "http://localhost:4000/api/v1/teachers";
+const pc_mob =window.location.hostname;
+const BASE_URL = `http://${pc_mob}:4000/api/v1/sessions`;
+const BASE_URL1 = `http://${pc_mob}:4000/api/v1/teachers`;
 let currentSessionId = null;
 let refreshInterval = null;
 

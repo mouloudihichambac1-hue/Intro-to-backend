@@ -1,3 +1,4 @@
+const pc_mob =window.location.hostname;
 document.getElementById('registerAdminForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -7,7 +8,7 @@ document.getElementById('registerAdminForm').addEventListener('submit', async (e
     const password = document.getElementById('password').value;
 
     // Route  de fichier app.js
-    const apiUrl = "http://localhost:4000/api/v1/admins/registerAdmin";
+    const apiUrl = `http://${pc_mob}:4000/api/v1/admins/registerAdmin`;
 
     try {
         const response = await fetch(apiUrl, {

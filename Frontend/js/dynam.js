@@ -1,3 +1,4 @@
+const pc_mob =window.location.hostname;
 document.getElementById('authForm').addEventListener('submit', async (e) => {
     e.preventDefault(); // Empêche la page de se recharger
     const params = new URLSearchParams(window.location.search);
@@ -11,12 +12,12 @@ document.getElementById('authForm').addEventListener('submit', async (e) => {
 
 if (role === 'admin') {
     
-    apiUrl = `http://localhost:4000/api/v1/admins/loginAdmin`;
+    apiUrl = `http://${pc_mob}:4000/api/v1/admins/loginAdmin`;
 } else if (role === 'prof') {
     
-    apiUrl = `http://localhost:4000/api/v1/teachers/loginTeacher`;
+    apiUrl = `http://${pc_mob}:4000/api/v1/teachers/loginTeacher`;
 } else {
-    apiUrl = `http://localhost:4000/api/v1/students/loginStudent`;
+    apiUrl = `http://${pc_mob}:4000/api/v1/students/loginStudent`;
 }
     try {
         const response = await fetch(apiUrl, {

@@ -1,4 +1,5 @@
-const BASE_URL2 = "http://localhost:4000/api/v1/students";
+const pc_mob =window.location.hostname;
+const BASE_URL2 = `http://${pc_mob}:4000/api/v1/students`;
 async function submitPresence() {
     const code = document.getElementById('inputCode').value.toUpperCase();
     const token = localStorage.getItem('token');
@@ -7,7 +8,7 @@ async function submitPresence() {
     if (!code) return alert("Veuillez saisir le code !");
 
     try {
-        const res = await fetch('http://localhost:4000/api/v1/sessions/mark-presence', {
+        const res = await fetch(`http://${pc_mob}:4000/api/v1/sessions/mark-presence`, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
