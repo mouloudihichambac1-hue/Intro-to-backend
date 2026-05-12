@@ -30,7 +30,7 @@ const teacherSchema = new mongoose.Schema({
             minlength:2,
             maxlength:50,
         },
-        university: {
+    university: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Admin',
             required: true
